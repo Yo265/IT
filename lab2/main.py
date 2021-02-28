@@ -2,7 +2,7 @@
 import string
 import math
 
-f = open(r'E:\8_semestr\TI\lab2\res\1.txt', "r", encoding="windows-1251")
+f = open(r"res/1.txt", "r", encoding="windows-1251")
 text = f.read()
 text = text.lower()
 
@@ -20,7 +20,7 @@ text_tokens = dict()
 
 
 def shannon(txt):
-    for d in range(1, 4):
+    for d in range(1, 10):
         summa = 0
         for i in range(len(txt) - d + 1):
             if text_tokens.get(txt[i:i + d]) is None:
@@ -30,13 +30,13 @@ def shannon(txt):
                 text_tokens[txt[i:i + d]] = text_tokens.get(txt[i:i + d]) + 1
                 summa += 1
         if d == 1:
-            MaxH = math.log(len(text_tokens), 2)
-            print("MaxH = ", MaxH)
-        H = 0
+            max_h = math.log(len(text_tokens), 2)
+            print("max_h = ", max_h)
+        h = 0
         for value in text_tokens.values():
-            H += (-1) * (value / summa) * math.log(value / summa, 2)
-        H /= d
-        print(f"H{d} = {H}")
+            h += (-1) * (value / summa) * math.log(value / summa, 2)
+        h /= d
+        print(f"h{d} = {h}")
         text_tokens.clear()
 
 
